@@ -20,7 +20,7 @@ Grant- Used to give permissions to a user.
 revoke-Used to take back permissions from a user.
 
 Tip:csr
-TCL:transaction control language
+TCL:transaction control language- rechanges
 commit: Saves all the changes permanently
 rollback: Undo changes
 savepoint: Marks a point in a transaction
