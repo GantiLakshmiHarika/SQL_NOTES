@@ -24,3 +24,76 @@ TCL:transaction control language- rechanges
 commit: Saves all the changes permanently
 rollback: Undo changes
 savepoint: Marks a point in a transaction
+
+
+example :
+
+--  Create table
+CREATE TABLE companydetailed (
+    companyname VARCHAR(50),
+    companylocation VARCHAR(50),
+    companyid INT PRIMARY KEY,
+    companyemail VARCHAR(50)  -- added column
+);
+
+--  Insert records
+INSERT INTO companydetailed(companyname, companylocation, companyid) VALUES('tcs','vizag',1);
+INSERT INTO companydetailed(companyname, companylocation, companyid) VALUES('wipro','hyd',2);
+INSERT INTO companydetailed(companyname, companylocation, companyid) VALUES('hcl','bangalore',3);
+INSERT INTO companydetailed(companyname, companylocation, companyid) VALUES('zoho','chennai',4);
+INSERT INTO companydetailed(companyname, companylocation, companyid) VALUES('hire3x','kerala',5);
+INSERT INTO companydetailed(companyname, companylocation, companyid) VALUES('infosys','pune',6);
+INSERT INTO companydetailed(companyname, companylocation, companyid) VALUES('accenture','bangalore',7);
+INSERT INTO companydetailed(companyname, companylocation, companyid) VALUES('cognizant','chennai',8);
+INSERT INTO companydetailed(companyname, companylocation, companyid) VALUES('capgemini','hyderabad',9);
+INSERT INTO companydetailed(companyname, companylocation, companyid) VALUES('techmahindra','mumbai',10);
+
+--  Update Wipro location
+UPDATE companydetailed
+SET companylocation = 'hyderabad'
+WHERE companyname = 'wipro';
+
+--  Update Infosys email
+UPDATE companydetailed
+SET companyemail = 'infosys@gmail.com'
+WHERE companyname = 'infosys';
+
+--  Select statements
+SELECT * FROM companydetailed;             -- check all rows
+SELECT * FROM companydetailed WHERE companyid = 2;  -- check Wipro
+SELECT * FROM companydetailed WHERE companyid = 6;  -- check Infosys
+
+--  Grant INSERT permission to a user
+--GRANT INSERT
+--ON companydetailed
+--TO testuser;  
+
+--  revoke INSERT permission to a user
+--revoke insert
+--on companydetailed
+--from testuser;
+
+
+-- Start transaction
+BEGIN TRANSACTION;
+
+-- Insert a new company
+INSERT INTO companydetailed(companyname, companylocation, companyid, companyemail)
+VALUES('winfo','vizag',11,'winfo@gmail.com');
+
+-- Create a savepoint
+SAVE TRANSACTION mySavePoint;
+
+-- Update Wipro location
+UPDATE companydetailed
+SET companylocation = 'bangalore'
+WHERE companyname = 'wipro';
+
+-- If something goes wrong, undo only the update after savepoint
+-- ROLLBACK TRANSACTION mySavePoint;
+
+-- Make all changes permanent
+COMMIT TRANSACTION;
+
+-- Check table
+SELECT * FROM companydetailed;
