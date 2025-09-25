@@ -1,1 +1,31 @@
+clauses are used to reterive the information from the data base but not complete information
+we use select,groupby,having,orderby clauses
+select is uesd to reterive the coloumn that which the user needs for execution
+where is used for reterving of the rows from the database table
+example :
+create table emp(
+empid int PRIMARY KEY,
+empname varchar(20),
+empdept varchar(20)
+);
 
+insert into emp (empid,empname,empdept)values(1,'sreeja','it');
+insert into emp (empid,empname,empdept)values(2,'priya','cse');
+insert into emp (empid,empname,empdept)values(3,'kalyan','cyber');
+insert into emp (empid,empname,empdept)values(4,'nani','devops');
+insert into emp (empid,empname,empdept)values(5,'sandeep','AWScloud');
+select * from emp;
+select empname ,empdept from emp
+where empid=3;
+select empdept from emp
+where empname ='sandeep';
+
+
+now using in and between functions :
+IN:Used to filter values matching a specific set of discrete values.
+BETWEEN: Used to filter values within a continuous range
+-- Get employees whose dept is either IT or CSE
+select empname from emp where empdept in('it','cse');
+select salary from emp where empname in('kalyan','nani');
+--Get employee whose salary is in between 35 to 55
+select empname,salary from emp where salary between 3500 and 5500;
