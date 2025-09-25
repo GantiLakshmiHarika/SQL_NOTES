@@ -1,1 +1,15 @@
+--Arthmetic operations 
+select empname ,salary,salary*0.4,salary*0.1 , salary+(salary*0.4)-(Salary*0.1) from emp ;
+alter table emp
+add allowences varchar(20);
+alter table emp
+add fundcuts varchar(29);
+alter table emp
+add netsalary varchar(20);
+select *from emp;
+update emp set allowences =salary*0.4;
+update emp set fundcuts=salary*0.1;
+update emp set netsalary=salary+(salary*0.4)-(Salary*0.1);
+select *from emp;
+
 
