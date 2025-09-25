@@ -12,4 +12,10 @@ update emp set fundcuts=salary*0.1;
 update emp set netsalary=salary+(salary*0.4)-(Salary*0.1);
 select *from emp;
 
+pseudo Alias super easy TIP : with using alter and update commands also we can insert column name for above rows 
+select empname ,salary,
+salary*0.4 as allowence,
+salary*0.1 as fundcuts, 
+salary+(salary*0.4)-(Salary*0.1)as netsalary
+from emp ;
 
