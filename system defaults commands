@@ -1,3 +1,4 @@
+//string 
 LEFT(str, n)       -- Returns leftmost n characters
 RIGHT(str, n)      -- Returns rightmost n characters
 SUBSTRING(str, s, l) -- Returns substring starting at s, length l
@@ -8,4 +9,52 @@ RTRIM(str)         -- Removes spaces from right side
 UPPER(str)         -- Converts string to uppercase
 LOWER(str)         -- Converts string to lowercase
 REPLACE(str,a,b)   -- Replaces all a with b in string
+
+example :
+SELECT LEFT('harika', 3);         -- har
+SELECT RIGHT('harika', 2);        -- ka
+SELECT SUBSTRING('lovedonces', 4, 5); -- edonc
+SELECT CHARINDEX('o', 'lovedonces');  -- 2
+SELECT LEN('harika');             -- 6
+SELECT LTRIM('   hello');         -- 'hello'
+SELECT RTRIM('hello   ');         -- 'hello'
+SELECT UPPER('harika');           -- HARIKA
+SELECT LOWER('HARIKA');           -- harika
+SELECT REPLACE('hello world','world','sql'); -- hello sql
+
+
+
+//number 
+FLOOR(x)    -- Largest integer ≤ x (round down)
+CEILING(x)  -- Smallest integer ≥ x (round up)
+ROUND(x, n) -- Rounds x to n decimal places
+ABS(x)      -- Absolute value of x
+POWER(x,y)  -- x raised to power y
+SQRT(x)     -- Square root of x
+
+example:
+SELECT FLOOR(1.8);         -- 1
+SELECT CEILING(2.9);       -- 3
+SELECT ROUND(123.456, 2);  -- 123.46
+SELECT ABS(-25);           -- 25
+SELECT POWER(2, 3);        -- 8
+SELECT SQRT(16);           -- 4
+
+
+
+//date and time functions 
+GETDATE()           -- Returns current date & time
+YEAR(GETDATE())     -- Returns year from current date
+MONTH(GETDATE())    -- Returns month from current date
+DAY(GETDATE())      -- Returns day from current date
+DATEADD(yy, 1, GETDATE()) -- Add 1 year to current date
+DATEDIFF(dd, '2024-01-01', GETDATE()) -- Difference in days
+
+example :
+SELECT GETDATE();                 -- 2025-09-24 20:15:30.123
+SELECT YEAR(GETDATE());           -- 2025
+SELECT MONTH(GETDATE());          -- 9
+SELECT DAY(GETDATE());            -- 24
+SELECT DATEADD(yy, 1, GETDATE()); -- 2026-09-24 20:15:30.123
+SELECT DATEDIFF(dd, '2025-01-01', GETDATE()); -- 266  (days passed in 2025)
 
