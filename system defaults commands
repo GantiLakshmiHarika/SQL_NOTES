@@ -1,1 +1,11 @@
+LEFT(str, n)       -- Returns leftmost n characters
+RIGHT(str, n)      -- Returns rightmost n characters
+SUBSTRING(str, s, l) -- Returns substring starting at s, length l
+CHARINDEX(sub, str [, start]) -- Returns position of sub in str
+LEN(str)           -- Returns length of string
+LTRIM(str)         -- Removes spaces from left side
+RTRIM(str)         -- Removes spaces from right side
+UPPER(str)         -- Converts string to uppercase
+LOWER(str)         -- Converts string to lowercase
+REPLACE(str,a,b)   -- Replaces all a with b in string
 
