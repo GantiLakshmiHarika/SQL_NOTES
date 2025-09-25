@@ -21,11 +21,19 @@ select empdept from emp
 where empname ='sandeep';
 
 
-now using in and between functions :
+Now using in and between functions :
 IN:Used to filter values matching a specific set of discrete values.
 BETWEEN: Used to filter values within a continuous range
 -- Get employees whose dept is either IT or CSE
 select empname from emp where empdept in('it','cse');
 select salary from emp where empname in('kalyan','nani');
 --Get employee whose salary is in between 35 to 55
-select empname,salary from emp where salary between 3500 and 5500;
+select empname,salary from emp where salary between 3500 and 5500;LIKE
+LIKE :Used for pattern matching in strings (text columns).
+Often used with wildcards:
+%,_ 
+select empname from emp where empname like('s%');//starting with alphabet s
+select empname from emp where empname like('%s');//ending with s
+select empname from emp where empname like('%s%');//in between s
+
+
