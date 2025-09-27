@@ -37,3 +37,12 @@ select empname from emp where empname like('%s');//ending with s
 select empname from emp where empname like('%s%');//in between s
 
 
+ORDER BY Clause
+Used to arrange the result set in ascending or descending order.
+By default, it arranges in ascending order.
+Can be applied on single or multiple columns.
+Always used at the end of the SELECT statement.
+example :
+select empid,empname,salary from emp order by salary ; // it also provides ascending order by default
+select empid,empname,salary from emp order by salary asc; // this also provides ascending order by default
+select empid,empname,salary from emp order by salary desc;
