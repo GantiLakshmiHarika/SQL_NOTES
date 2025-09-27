@@ -46,3 +46,9 @@ example :
 select empid,empname,salary from emp order by salary ; // it also provides ascending order by default
 select empid,empname,salary from emp order by salary asc; // this also provides ascending order by default
 select empid,empname,salary from emp order by salary desc;
+
+
+Group BY clause 
+it is used to add necessary columns
+select empdept , avg(salary) from emp  group by empdept;
+
