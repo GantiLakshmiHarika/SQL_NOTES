@@ -19,3 +19,11 @@ salary*0.1 as fundcuts,
 salary+(salary*0.4)-(Salary*0.1)as netsalary
 from emp ;
 
+distinct - used to delete duplicate values from the table
+example : select distinct years from emp;
+
+working with null values - null values are not zeros
+select empname, years from emp where years is null or years=-1;
+
+
+
