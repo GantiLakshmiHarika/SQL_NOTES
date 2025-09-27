@@ -13,3 +13,11 @@ select sum(salary) from emp;
 select count(salary) from emp;
 select var(salary) from emp;
 select stdev(salary) from emp;
+
+To find total number of employes in organization
+select count(empname)from emp;
+select count(empname)from emp;
+select count( distinct empdept) from emp;
+select *from emp;
+select netsalary from emp  where empdept='it';
+select avg(salary) , count(empid) from emp;
