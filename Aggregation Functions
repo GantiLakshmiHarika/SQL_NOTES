@@ -21,3 +21,6 @@ select count( distinct empdept) from emp;
 select *from emp;
 select netsalary from emp  where empdept='it';
 select avg(salary) , count(empid) from emp;
+having sub class
+HAVING is necessary when you want to apply conditions on aggregated data
+example:select empdept,avg(salary) as salary from emp group by empdept having count (*) >2 ;
