@@ -1,1 +1,29 @@
+Joints lo rendu tables nunchi em kavalo from ki mundhu rayali from ventane class name of 1st table joint class name of second table on same feild with = 
+example :
+select  s.student_id, s.last_name ,s.year,s.first_name ,c.credits,c.course_name from students s right join  courses c on s.dept=c.dept;
 
+1. INNER JOIN
+👉 Takes only the common rows from both tables.
+2. LEFT JOIN
+👉 Takes all rows from the left table, and the matching rows from the right table.
+👉 If no match → fills with NULL.
+3. RIGHT JOIN
+👉 Takes all rows from the right table, and the matching rows from the left table.
+👉 If no match → fills with NULL.
+4. FULL JOIN
+👉 Takes all rows from both tables.
+👉 If no match → fills with NULL on the missing side.
+
+
+👉 Simple trick:
+INNER = common only
+LEFT = left all + right matched
+RIGHT = right all + left matched
+FULL = everything
+
+
+All 4 joints :
+select student_id , first_name ,course_name from students left join courses on students.dept=courses.dept; 
+select s.student_id, s.last_name ,s.year, c.semester from students  s inner join courses c  on s.dept=c.dept;
+select s.student_id, s.last_name ,s.year, c.semester from students  s full outer join courses c  on s.dept=c.dept;
+select  s.student_id, s.last_name ,s.year,s.first_name ,c.credits,c.course_name from students s right join  courses c on s.dept=c.dept;
