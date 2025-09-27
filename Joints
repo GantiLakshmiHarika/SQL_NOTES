@@ -27,3 +27,16 @@ select student_id , first_name ,course_name from students left join courses on s
 select s.student_id, s.last_name ,s.year, c.semester from students  s inner join courses c  on s.dept=c.dept;
 select s.student_id, s.last_name ,s.year, c.semester from students  s full outer join courses c  on s.dept=c.dept;
 select  s.student_id, s.last_name ,s.year,s.first_name ,c.credits,c.course_name from students s right join  courses c on s.dept=c.dept;
+
+
+
+Adding one output result to another join  for that we use with and as:
+
+WITH left_result AS (
+    SELECT s.student_id, s.last_name, c.course_name
+    FROM students s
+    LEFT JOIN courses c ON s.dept = c.dept
+)
+SELECT lr.student_id, lr.last_name, c.course_name
+FROM left_result lr
+RIGHT JOIN courses c ON lr.course_name = c.course_name;
