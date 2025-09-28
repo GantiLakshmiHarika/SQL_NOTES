@@ -1,1 +1,12 @@
 
+row_number - gives the unique value for the table
+over(partition by)-divides as per the instructions given by the user
+grouping functions lo over function use cheyali 
+window function lo kuda overfunction with any column name use cheyali
+example :
+select empname ,empdept,avg(salary)over (partition by empdept ),//grouping function
+row_number() over(partition by empdept order by salary ) from emp; //window function
+
+--find firstt 2 employes joined in company
+select top 2 empname ,salary,hired , row_number() over(partition by empdept order by hired) as rn from emp ;
+
