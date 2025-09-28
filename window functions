@@ -10,3 +10,7 @@ row_number() over(partition by empdept order by salary ) from emp; //window func
 --find firstt 2 employes joined in company
 select top 2 empname ,salary,hired , row_number() over(partition by empdept order by hired) as rn from emp ;
 
+--finding top 3 employees from all the departments with highest salaey 
+
+select top 3 empdept,empname,salary, max(salary) over(partition by empdept) as maxsalary,
+rank() over(partition by empdept order by salary desc) as r from emp;
