@@ -20,7 +20,7 @@ where empid=3;
 select empdept from emp
 where empname ='sandeep';
 
-
+// operators
 Now using in and between functions :
 IN:Used to filter values matching a specific set of discrete values.
 BETWEEN: Used to filter values within a continuous range
