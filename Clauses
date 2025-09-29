@@ -1,5 +1,11 @@
 clauses are used to reterive the information from the data base but not complete information
-we use select,groupby,having,orderby clauses
+we use 
+1 distinct - remove duplicates 
+2 groupby - combining 
+3 where - Filters rows before grouping.
+4 having - Filters rows after grouping.
+5 orderby - used to assign values asc /desc
+
 select is uesd to reterive the coloumn that which the user needs for execution
 where is used for reterving of the rows from the database table
 example :
