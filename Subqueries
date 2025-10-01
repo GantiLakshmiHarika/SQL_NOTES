@@ -1,1 +1,26 @@
+A subquery is a query inside another SQL query.
+It is used when you need the result of one query to be used in another.
+It is written inside parentheses ().
 
+Types of Query:
+
+Root Query: Independent query.
+
+Parent Query (or) Outer Query (or) Main Query:
+The query which depends on any other query for its condition value.
+
+Child Query (or) Inner Query (or) Sub Query:
+Query within another query embedded in the WHERE clause of another SQL query.
+The query which provides conditional values to its parent query.
+Operators like =, <, >, >=, <=, IN, BETWEEN can be used.
+Within the WHERE clause, up to 255 subqueries can be nested.
+
+
+Syntax : 
+SELECT column_name
+FROM table_name
+WHERE column_name expression_operator
+(SELECT column_name FROM table_name WHERE ...);
+
+example :
+select emp id,empname,empsalary from emp where empsalary= (select max(empsalary) from emp);
