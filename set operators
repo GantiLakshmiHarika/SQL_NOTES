@@ -1,1 +1,52 @@
+4 set operators in sql
+1) union
+2) union all
+3) interset
+4) minus
 
+Table 1:                                 table 2
+
+id          name       dept               id             name         dept
+1           ajay        it                1              raju         ece
+2           ram         cse               2              hari         eee
+3          raju        mech               3              john          it
+
+union : returns all the names but prints raju only one time it removes duplicates 
+query : 
+create table employee 
+(
+empid int primary key,
+empname  varchar(20),
+empdept varchar (20)
+);
+
+insert into employee(empid,empname,empdept) values(1,'ajay' ,'it');
+insert into employee(empid,empname,empdept) values(2,'ram' ,'cse');
+insert into employee(empid,empname,empdept) values(3,'raju' ,'mech');
+select * from employee;
+
+create table dept
+(
+deptid  int primary key,
+deptname varchar(20),
+depttype varchar(20)
+);
+
+insert into dept(deptid,deptname,depttype)values(1, 'raju','ece');
+insert into dept(deptid,deptname,depttype)values(2, 'hari','eee');
+insert into dept(deptid,deptname,depttype)values(3, 'john','it');
+select * from dept;
+
+--union operator --
+select empname from employee union select deptname from dept;
+
+--union all operator --
+select empname,empdept from employee union all select deptname,depttype from dept;
+
+--interset operator --
+select empname from employee intersect select deptname from dept;
+
+-- minus--
+select empname from employee
+minus
+select deptname from dept;
