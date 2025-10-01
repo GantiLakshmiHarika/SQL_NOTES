@@ -1,1 +1,123 @@
+6 constraint sin sql 
 
+1  primary key 
+2  check
+3 foreign key
+4 not null
+5 unique
+6 default 
+
+// primary constraints doesnot allow the duplicate values into the table and also on table has only one primary key coloumn
+create table employee 
+(
+empid int primary key,
+empname  varchar(20),
+empdept varchar (20)
+);
+
+insert into employee(empid,empname,empdept) values(1,'ajay' ,'it');
+insert into employee(empid,empname,empdept) values(1,'hello', 'civil');
+insert into employee(empid,empname,empdept) values(2,'ram' ,'cse');
+insert into employee(empid,empname,empdept) values(3,'raju' ,'mech');
+select * from employee;
+
+Error output : Violation of PRIMARY KEY constraint 'PK__employee__AF4CE865DD96509C'. Cannot insert duplicate key in object 'dbo.employee'. The duplicate key value is (1).
+see here primary key id  doesnot allow duplicate values 
+
+
+// Union constraint only accepts only unique values it doesnot allow duplicate values in the column 
+
+create table employee 
+(
+empid int primary key,
+empname  varchar(20) unique,
+empdept varchar (20)
+);
+
+insert into employee(empid,empname,empdept) values(1,'ajay' ,'it');
+insert into employee(empid,empname,empdept) values(2,'ajay' ,'cse');
+insert into employee(empid,empname,empdept) values(3,'raju' ,'mech');
+select * from employee;
+
+Error Output : Msg 2627, Level 14, State 1, Line 9
+Violation of UNIQUE KEY constraint 'UQ__employee__65D7121656991FDE'. Cannot insert duplicate key in object 'dbo.employee'. The duplicate key value is (ajay).
+The statement has been terminated. here  name ajay is duplicate 
+
+
+
+// Check  Constraint  checks the condition and  returns the output based upon the condition
+
+create table employee 
+(
+empid int primary key,
+empsalary int check(empsalary >35000),
+empname  varchar(20) unique,
+empdept varchar (20)
+);
+
+insert into employee(empid,empname,empdept,empsalary) values(1,'ajay' ,'it',50000);
+insert into employee(empid,empname,empdept,empsalary) values(2,'shyam' ,'cse',35000);
+insert into employee(empid,empname,empdept,empsalary) values(3,'raju' ,'mech',45000);
+select * from employee where (empsalary >35000);
+
+output : it returns the output based upon the condition  written in the select statement 
+empname           emp salary 
+ ajay                 50000
+ raju                 45000
+
+
+// notnull  must need to enter the values in the table we should not enter any null values into the table  
+create table employee 
+(
+    empid int primary key,
+    empsalary int CHECK (empsalary > 35000),
+    empname varchar(20) NOT NULL DEFAULT 'NA' CHECK (empname <> ''),
+    empdept varchar(20)
+);
+
+insert into employee(empid,empname,empdept,empsalary) values(1,'ajay','it',50000);
+insert into employee(empid,empdept,empsalary) values(2,'cse',40000);
+insert into employee(empid,empname,empdept,empsalary) values(3,'raju','mech',45000);
+select * from employee;
+
+output : it returns the NA  where there is no name 
+
+
+foreign key :  returns the values common values from both the tables
+create table details
+(
+    empid int,
+    empsalary int,
+    empname varchar(20),
+    empdept varchar(20) unique
+);
+
+create table projects
+(
+    projectid int,
+    projectname varchar(30),
+    projectsalary int,
+    empdept varchar(20) references details(empdept)
+);
+
+-- Insert into details
+insert into details(empid, empname, empdept, empsalary) 
+values (1, 'ajay', 'IT', 50000);
+insert into details(empid, empname, empdept, empsalary) 
+values (2, 'john', 'CSE', 40000);
+insert into details(empid, empname, empdept, empsalary) 
+values (3, 'raju', 'MECH', 45000);
+
+-- Insert into projects
+insert into projects(projectid, projectname, projectsalary, empdept) 
+values (1, 'Website Redesign', 50000, 'IT');
+insert into projects(projectid, projectname, projectsalary, empdept) 
+values (2, 'App Development', 40000, 'CSE');
+insert into projects(projectid, projectname, projectsalary, empdept) 
+values (3, 'Database Migration', 45000, 'MECH');
+
+-- Select data
+select * from details;
+select * from projects;
+
+//deafault constraint will fill the default values when user doesnot enter any value 
