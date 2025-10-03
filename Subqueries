@@ -24,3 +24,4 @@ WHERE column_name expression_operator
 
 example :
 select emp id,empname,empsalary from emp where empsalary= (select max(empsalary) from emp);
+
