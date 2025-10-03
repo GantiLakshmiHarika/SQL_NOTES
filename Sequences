@@ -1,1 +1,52 @@
+What is a Sequence?
+A sequence is a number generator.
+It gives you numbers one by one (like 1, 2, 3, …).
+You can control start, increment, min, max, cycle etc.
 
+✅ Create Sequence
+CREATE SEQUENCE itemname     -- sequence name
+AS INT                       -- data type
+START WITH 1                 -- starting number
+INCREMENT BY 1;              -- increment step
+
+
+✅ Get Next Value
+SELECT NEXT VALUE FOR itemname;
+
+✅ Retrieve Sequence Details
+SELECT * 
+FROM sys.sequences
+WHERE name = 'itemname';
+
+
+✅ Alter Sequence
+ALTER SEQUENCE itemname
+RESTART WITH 100;  
+
+// Amazon sequence and table creation 
+-- Create a sequence
+CREATE SEQUENCE AmazonSeq
+AS INT
+START WITH 1
+INCREMENT BY 10;
+
+-- Create table
+CREATE TABLE Amazon(
+    OrderID INT PRIMARY KEY DEFAULT NEXT VALUE FOR AmazonSeq,
+    ProductName VARCHAR(20),
+    CustomerName VARCHAR(25),
+    Quantity INT,
+    Price DECIMAL(10,2)
+);
+
+-- Insert rows (OrderID will come from sequence automatically)
+INSERT INTO Amazon (CustomerName, ProductName, Quantity, Price)
+VALUES 
+('John',  'Laptop',      1, 55000.00),
+('Alice', 'Mobile',      2, 25000.00),
+('Ravi',  'Headphones',  3, 3000.00),
+('Sneha', 'Tablet',      1, 18000.00),
+('Kiran', 'Smart Watch', 2, 7500.00);
+
+-- View table
+SELECT * FROM Amazon;
